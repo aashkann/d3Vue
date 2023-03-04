@@ -384,7 +384,7 @@ const data = {
 
 export default {
   name: "App",
-  mounted: function() {
+  mounted: () =>{
     const partition = data => {
       const root = d3
         .hierarchy(data)
@@ -409,7 +409,7 @@ export default {
       .attr("transform", `translate(${width / 2},${width / 2})`);
 
     const color = d3.scaleOrdinal(
-      d3.quantize(d3.interpolateRainbow, data.children.length + 1)
+      d3.quantize(d3.interpolateSinebow, data.children.length + 1)
     );
 
     const radius = width / 6;
@@ -539,3 +539,28 @@ export default {
   }
 };
 </script>
+
+
+<style scoped>
+h1 {
+  font-weight: 500;
+  font-size: 2.6rem;
+  top: -10px;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+.greetings h1,
+.greetings h3 {
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .greetings h1,
+  .greetings h3 {
+    text-align: left;
+  }
+}
+</style>
